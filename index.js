@@ -34,7 +34,7 @@ client.on("ready", () => {
 });
 
 const notifier = new YTNotifier({
-  hubCallback: "https://transparent-garnet-theater.glitch.me/yt",
+  hubCallback: "https://sleepy-sands-66607.herokuapp.com/yt",
   secret: "WEEBUS_BOT"
 });
 
