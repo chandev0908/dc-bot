@@ -42,3 +42,4 @@ notifier.on("notified", data => {
 notifier.subscribe(config.CHANNEL_ID);
 
 app.use("/yt", notifier.listener());
+client.login(config.TOKEN);
