@@ -6,6 +6,14 @@ const YTNotifier = require("youtube-notification");
 const discord = require("discord.js")
 const client = new discord.Client();
 const config = require('./config.json')
+
+
+app.get("/", (request, response) => {
+  console.log("Ping");
+  response.writeHead(200, { "Content-Type": "text/plain" });
+  response.end("Zin Bot");
+});
+
 client.on("ready", () => {
   console.log("Watching " + config.CHANNEL_ID.length + " Channels");
   client.user.setPresence({

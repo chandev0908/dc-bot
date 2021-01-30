@@ -1,11 +1,5 @@
 const akaneko = require('akaneko');
 
-app.get("/", (request, response) => {
-  console.log("Ping");
-  response.writeHead(200, { "Content-Type": "text/plain" });
-  response.end("Zin Bot");
-});
-
 const discord = require("discord.js");
 const client = new discord.Client({
   partials: ["MESSAGE", "CHANNEL", "REACTION"]
