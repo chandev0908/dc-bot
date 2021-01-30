@@ -4,7 +4,7 @@
   "description": "Discord bot made by zin",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node ytNotifyServ.js"
   },
   "dependencies": {
     "express": "^4.17.1",
