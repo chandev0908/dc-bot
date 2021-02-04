@@ -35,7 +35,7 @@ const notifier = new YTNotifier({
 notifier.on("notified", data => {
   console.log("New Video");
   client.channels.cache.get(config.SERVER_CHANNEL_ID).send(
-      `**${data.channel.name}** new video - **${data.video.link} @everyone**`
+      `**${data.channel.name}** new video - **${data.video.link} **`
     );
 });
 

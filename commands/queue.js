@@ -1,3 +1,4 @@
+const Discord = require('discord.js')
 module.exports.run = async (client, message, args) => {
     if (!message.member.voice.channel) return message.channel.send('You must be in a voice channel to use this command.');
 
@@ -5,9 +6,10 @@ module.exports.run = async (client, message, args) => {
 
     if(queue) {
         client.distube.getQueue(message);
-        message.channel.send('Current queue:\n' + queue.songs.map((song, id) =>
-            `**${id+1}**. [${song.name}] - \`${song.formattedDuration}\``
-        ).join("\n"));
+        const queueEmbed = new Discord.MessageEmbed()
+            .setColor('#0099ff')
+            .setDescription('Current Queue\n' + queue.songs.map((song, id)=> `${id+1}. [${song.name}] - ${song.formattedDuration}`).join("\n"))
+        message.channel.send(queueEmbed)
         setTimeout(() => {
           message.delete();
         }, 3000)

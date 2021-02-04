@@ -14,16 +14,18 @@ client.distube = new DisTube(client, {
   emitNewSongOnly: true
 });
 client.distube
-  .on("playSong", (message, queue, song) =>
-    message.channel.send(
-      `Playing \`${song.name}\` - \`${song.formattedDuration}\`\nRequested by: ${song.user}`
-    )
-  )
-  .on("addSong", (message, queue, song) =>
-    message.channel.send(
-      `Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`
-    )
-  );
+  .on("playSong", (message, queue, song) =>{
+    const playSongEmbed = new discord.MessageEmbed()
+      .setColor('#0099ff')
+      .setDescription(`Playing ${song.name}\nDuration ${song.formattedDuration}\nRequested by: ${song.user}`)
+    message.channel.send(playSongEmbed)
+  })
+  .on("addSong", (message, queue, song) =>{
+    const addSongEmbed = new discord.MessageEmbed()
+      .setColor('#0099ff')
+      .setDescription(`Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`)
+    message.channel.send(addSongEmbed)
+  });
 
 require("./utils/loadEvents")(client);
 
@@ -33,26 +35,3 @@ client.aliases = new discord.Collection();
 loadCommands(client);
 
 client.login(config.TOKEN);
-
-const { CommandoClient } = require('discord.js-commando');
-const path = require('path');
-const client2 = new CommandoClient({
-	commandPrefix: '.',
-	owner: '375992650429628416'
-});
-client2.registry
-	.registerDefaultTypes()
-	.registerGroups([
-		['first', 'NSFW Commands'],
-		['second', 'Music Player Commands'],
-	])
-	.registerDefaultGroups()
-	.registerDefaultCommands()
-	.registerCommandsIn(path.join(__dirname, 'commandss'));
-client2.once('ready', () => {
-	console.log(`Logged in as ${client2.user.tag}! (${client2.user.id})`);
-});
-
-client2.on('error', console.error);
-client2.login(config.TOKEN);
-  
