@@ -25,7 +25,8 @@ client.distube
       .setColor('#0099ff')
       .setDescription(`Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`)
     message.channel.send(addSongEmbed)
-  });
+  })
+  .on("empty", message => message.channel.send("Channel is empty. Leaving the channel"))
 
 require("./utils/loadEvents")(client);
 

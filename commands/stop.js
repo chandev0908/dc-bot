@@ -4,10 +4,10 @@ module.exports.run = async (client, message, args) => {
     let queue = await client.distube.getQueue(message);
 
     if(queue) {
-      client.distube.stop(message)
-      message.react('🛑')
+        client.distube.stop(message)
+        message.react('🛑')
     } else if (!queue) {
-        message.channel.send("No music was playing!");
+        client.distube.stop(message)
     };
 }
 
