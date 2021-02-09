@@ -3,11 +3,11 @@ module.exports.run = (client, message) => {
   let matchNum = JSONf.match(/\d/g);
   let wholeNum = matchNum.join("");
   setTimeout(() => {
-    message.delete(); 
-  }, 1000 * wholeNum)
-}
+    message.delete();
+  }, 1000 * wholeNum);
+};
 
 module.exports.config = {
-    name: "temp",
-    aliases: ["t"]
-}
+  name: "temp",
+  aliases: ["t"],
+};

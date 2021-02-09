@@ -1,20 +1,23 @@
-const Discord = require('discord.js');
+const Discord = require("discord.js");
 module.exports.run = async (client, message, args) => {
-    if (!message.member.voice.channel) return message.channel.send('You must be in a voice channel to use this command.');
+  if (!message.member.voice.channel)
+    return message.channel.send(
+      "You must be in a voice channel to use this command."
+    );
 
-    let queue = await client.distube.getQueue(message);
-    let mode = client.distube.toggleAutoplay(message);
-    if(queue){
+  let queue = await client.distube.getQueue(message);
+  let mode = client.distube.toggleAutoplay(message);
+  if (queue) {
     const autoPlayEmbed = new Discord.MessageEmbed()
-        .setColor('#0099ff')
-        .setDescription("Set autoplay mode to `" + (mode ? "On" : "Off") + "`")
-    message.channel.send(autoPlayEmbed)
-    }else{
-        return
-    }
-}
+      .setColor("#0099ff")
+      .setDescription("Set autoplay mode to `" + (mode ? "On" : "Off") + "`");
+    message.channel.send(autoPlayEmbed);
+  } else {
+    return;
+  }
+};
 
 module.exports.config = {
-    name: "autoplay",
-    aliases: []
-}
+  name: "autoplay",
+  aliases: [],
+};
