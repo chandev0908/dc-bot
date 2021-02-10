@@ -24,9 +24,9 @@ client.on("ready", () => {
     }
   });
 });
-const listener = server.listen(process.env.PORT, () =>
+const listener = server.listen(process.env.PORT, () =>{
   console.log(`Your app is listening on port ` + listener.address().port)
-);
+});
 const notifier = new YTNotifier({
   hubCallback: "https://sleepy-sands-66607.herokuapp.com/yt",
   secret: "WEEBUS_BOT"
