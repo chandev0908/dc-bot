@@ -82,4 +82,4 @@ client.aliases = new discord.Collection();
 
 loadCommands(client);
 
-client.login(config.TOKEN);
+client.login(process.env.TOKEN);
