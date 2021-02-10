@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args) => {
     client.distube.skip(message);
     message.react("⏭️");
   } else if (!queue) {
-    console.log("error skip");
+    message.channel.send('No music on que')
   }
 };
 
