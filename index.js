@@ -13,12 +13,11 @@ client.distube = new DisTube(client, {
 });
 client.distube
   .on("playSong", (message, queue, song) => {
-    let mode = client.distube.toggleAutoplay(message);
     const playSongEmbed = new discord.MessageEmbed()
       .setColor("#0099ff")
       .setTitle(`Now Playing!`)
       .setDescription(
-        `Playing ${song.name}\nDuration: **${song.formattedDuration}**\nRequested by: ${song.user}\nAutoplay ${mode ? "❌" : "✅"}`
+        `Playing ${song.name}\nDuration: **${song.formattedDuration}**\nRequested by: ${song.user}\nAutoplay ${mode ? "✅" : "❌"}`
       )
       .setThumbnail(song.thumbnail)
     message.channel.send(playSongEmbed).then(async function (message) {
