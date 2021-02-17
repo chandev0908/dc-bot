@@ -6,6 +6,7 @@ const config = require("./config.json");
 
 const { loadCommands } = require("./utils/loadCommands");
 const DisTube = require("distube");
+const e = require("express");
 
 client.distube = new DisTube(client, {
   searchSongs: false,
@@ -17,7 +18,7 @@ client.distube
       .setColor("#0099ff")
       .setTitle(`Now Playing!`)
       .setDescription(
-        `Playing ${song.name}\nDuration: **${song.formattedDuration}**\nRequested by: ${song.user}\nAutoplay ${mode ? "✅" : "❌"}`
+        `Playing ${song.name}\nDuration: **${song.formattedDuration}**\nRequested by: ${song.user}\nAutoplay ${queue.autoplay ? "✅" : "❌"}`
       )
       .setThumbnail(song.thumbnail)
     message.channel.send(playSongEmbed).then(async function (message) {
@@ -36,7 +37,7 @@ client.distube
         async function collect() {
           if (!queue) return;
           const member = message.guild.member(user);
-          if (member.voice.connection &&member.voice.connection !== member.guild.me.voice.connection)
+          if (member.voice.connection && member.voice.connection !== member.guild.me.voice.connection)
             return;
           let isPaused = await client.distube.isPaused(message);
           switch (reaction.emoji.name) {
@@ -56,31 +57,6 @@ client.distube
               }
           }
           reaction.users.remove(user.id);
-          // let queue = await client.distube.getQueue(message);
-          // if (!user.bot) {
-          //   if (reaction.emoji.name === "🛑") {
-          //     if (queue) {
-          //       client.distube.stop(message);
-          //       message.reactions.removeAll();
-          //     } else {
-          //       return;
-          //     }
-          //   } else if (reaction.emoji.name === "⏭️") {
-          //     if (queue) {
-          //       client.distube.skip(message);
-          //       message.reactions.removeAll();
-          //     } else {
-          //       return;
-          //     }
-          //   } else if (reaction.emoji.name === "⏯️") {
-          //     if (queue) {
-
-          //     } else {
-          //       return;
-          //     }
-          //   }
-          //   reaction.users.remove(user.id);
-          // }
         }
         collect();
       });
@@ -121,4 +97,4 @@ client.aliases = new discord.Collection();
 
 loadCommands(client);
 
-client.login(process.env.TOKEN);
+client.login("ODA1ODAzMDU3OTY2NDgxNDY4.YBgMlA.j2IwAyCCDLhrq7oj-7XWUYIIJqE");
