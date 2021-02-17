@@ -97,4 +97,4 @@ client.aliases = new discord.Collection();
 
 loadCommands(client);
 
-client.login("ODA1ODAzMDU3OTY2NDgxNDY4.YBgMlA.j2IwAyCCDLhrq7oj-7XWUYIIJqE");
+client.login(process.env.TOKEN);
