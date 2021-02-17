@@ -122,4 +122,4 @@ client.aliases = new discord.Collection();
 
 loadCommands(client);
 
-client.login("ODA1ODAzMDU3OTY2NDgxNDY4.YBgMlA.pjvSe9b2oFxN293dhuRzZoFcwaw");
+client.login(process.env.TOKEN);
