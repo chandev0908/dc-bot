@@ -3,13 +3,13 @@ Discord = require("discord.js"),
 Parser = require("rss-parser"),
 parser = new Parser(),
 Youtube = require("simple-youtube-api"),
-youtube = new Youtube(config.youtubeKey);
+youtube = new Youtube(process.env.YTKEY);
 
 const startAt = Date.now();
 const lastVideos = {};
 
 const client = new Discord.Client();
-client.login(config.token).catch(console.log);
+client.login(process.env.TOKEN).catch(console.log);
 
 client.on("ready", () => {
     console.log(`[!] Ready to listen ${config.youtubers.length} youtubers!`);
