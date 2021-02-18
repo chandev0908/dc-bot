@@ -1,15 +1,17 @@
 {
-  "CHANNEL_ID": [
-    "UCHsx4Hqa-1ORjQTh9TYDhww",
-    "UCL_qhgtOy0dy1Agp8vkySQg",
-    "UCoSrY_IQQVpmIRZ9Xf-y93g",
-    "UCMwGHR0BTZuLsmjY_NT5Pwg",
-    "UCyl1z3jo3XHR1riLFKG5UAg",
-    "UCwo0NZ2JjfSveAEYY8QgJIQ",
-    "UCWrDHR1oytDE7ofjtDHGG0A",
-    "UC3_Kig5omiBN6AILxKjV84Q",
-    "UCb-TGlrLuE7wiAS9C8aiEAQ",
-    "UCwVCpvgjpEqJJCQaAHR9qUw"
+  "message": "New video: **{videoTitle}**! It was uploaded by {videoAuthorName}! Here is the link: {videoURL}",
+  "channel": "677459250577932318",
+  "youtubers": [
+    "https://www.youtube.com/channel/UCHsx4Hqa-1ORjQTh9TYDhww",
+    "https://www.youtube.com/channel/UCL_qhgtOy0dy1Agp8vkySQg",
+    "https://www.youtube.com/channel/UCoSrY_IQQVpmIRZ9Xf-y93g",
+    "https://www.youtube.com/channel/UCMwGHR0BTZuLsmjY_NT5Pwg",
+    "https://www.youtube.com/channel/UCyl1z3jo3XHR1riLFKG5UAg",
+    "https://www.youtube.com/channel/UCwo0NZ2JjfSveAEYY8QgJIQ",
+    "https://www.youtube.com/channel/UCWrDHR1oytDE7ofjtDHGG0A",
+    "https://www.youtube.com/channel/UC3_Kig5omiBN6AILxKjV84Q",
+    "https://www.youtube.com/channel/UCb-TGlrLuE7wiAS9C8aiEAQ",
+    "https://www.youtube.com/channel/UCwVCpvgjpEqJJCQaAHR9qUw"
   ],
-  "SERVER_CHANNEL_ID": "677459250577932318"
+  "youtubeKey": "AIzaSyDv-NCX_GuOQpRCCXcjeuFMz1f6czfU9FA"
 }

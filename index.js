@@ -2,7 +2,7 @@ const discord = require("discord.js");
 const client = new discord.Client({
   partials: ["MESSAGE", "CHANNEL", "REACTION"],
 });
-const config = require("./config.json");
+const config = require("./config");
 
 const { loadCommands } = require("./utils/loadCommands");
 const DisTube = require("distube");
