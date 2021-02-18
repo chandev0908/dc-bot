@@ -1,5 +1,5 @@
 {
-  "message": "New video: **{videoTitle}**! It was uploaded by {videoAuthorName}! Here is the link: {videoURL}",
+  "message": "New video: **{videoTitle}**! It was uploaded by **{videoAuthorName}!** Here is the link: {videoURL}",
   "channel": "677459250577932318",
   "youtubers": [
     "https://www.youtube.com/channel/UCHsx4Hqa-1ORjQTh9TYDhww",
