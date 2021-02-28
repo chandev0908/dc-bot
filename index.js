@@ -98,3 +98,54 @@ client.aliases = new discord.Collection();
 loadCommands(client);
 
 client.login(process.env.TOKEN);
+
+function embedBuilder(description){
+  const reminderEmbed = new discord.MessageEmbed()
+      .setColor("#0099ff")
+      .setTitle("Class Schedule Reminder!")
+      .setDescription(description)
+  return client.channels.cache.get(process.env.SERVER_CHANNEL_ID).send(reminderEmbed);
+}
+//Subject Reminder for weebus
+const cron = require('cron');
+const server = require("youtube-notification/src/server");
+//Schedule for CC3 every tuesday & thursday
+let scheduleInCC3 = new cron.CronJob('55 6 * * 2,4', () => {
+  embedBuilder(`In 5mins you classes will start in CC3. @everyone`);
+}, "Asia/Singapore");
+//Schedule for SocSci/Rizal
+let scheduleInRizal = new cron.CronJob('25 8 * * 3,5', () => {
+  embedBuilder(`In 5mins you classes will start in Rizal. Goodluck pray for your life @everyone`);
+}, "Asia/Singapore");
+//Schedule for PSY
+let scheduleInPsy = new cron.CronJob('55 9 * * 3,5', () => {
+  embedBuilder(`In 5mins you classes will start in Psy. @everyone`);
+}, "Asia/Singapore");
+//Schedule for PE
+let scheduleInPE = new cron.CronJob('55 9 * * 4', () => {
+  embedBuilder(`In 5mins you classes will start in PE. @everyone`);
+}, "Asia/Singapore");
+//Schedule for HCI
+let scheduleInHCI = new cron.CronJob('55 12 * * 2,4', () => {
+  embedBuilder(`In 5mins you classes will start in HCI. @everyone`);
+}, "Asia/Singapore");
+//Schedule for Publc Speaking/GE ELECT
+let scheduleInPS = new cron.CronJob('55 12 * * 3,5', () => {
+  embedBuilder(`In 5mins you classes will start in Public Speaking. @everyone`);
+}, "Asia/Singapore");
+//Schedule for MATH
+let scheduleInMath = new cron.CronJob('25 14 * * 2,4', () => {
+  embedBuilder(`In 5mins you classes will start in Math. @everyone`);
+}, "Asia/Singapore");
+//Schedule for NSTP
+let scheduleInNSTP = new cron.CronJob('25 14 * * 3,5', () => {
+  embedBuilder(`In 5mins you classes will start in NSTP. @everyone`);
+}, "Asia/Singapore");
+scheduleInCC3.start();
+scheduleInRizal.start();
+scheduleInPsy.start();
+scheduleInPE.start();
+scheduleInHCI.start();
+scheduleInPS.start();
+scheduleInMath.start();
+scheduleInNSTP.start();
