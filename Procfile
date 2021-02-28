@@ -1,2 +1,2 @@
-web: node index.js
-process: node ytNotifyServ.js
+worker: node index.js
+web: node ytNotifyServ.js
