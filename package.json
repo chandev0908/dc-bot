@@ -16,9 +16,8 @@
     "ffmpeg-static": "^4.2.7",
     "node-opus": "^0.3.3",
     "opusscript": "^0.0.7",
-    "rss-parser": "^3.11.0",
-    "simple-youtube-api": "^5.2.1",
-    "youtube-dl": "^3.1.0"
+    "youtube-dl": "^3.1.0",
+    "youtube-notification": "^1.1.0"
   },
   "license": "MIT"
 }
