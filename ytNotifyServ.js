@@ -33,7 +33,7 @@ const notifier = new YouTubeNotifier({
 notifier.on('notified', data => {
   console.log('New Video');
   client.channels.cache.get(SERVER_CHANNEL_ID).send(
-    `**${data.channel.name}** just uploaded a new video - **${data.video.link}**`
+    `**${data.channel.name}** just uploaded a new video - **${data.video.link}** @everyone`
   );
 });
  
