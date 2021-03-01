@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 module.exports.run = async (client, message, args) => {
-    const date = new Date().toLocaleString({timeZone: "Asia/Singapore"})
+    const date = new Date().toLocaleString("en-US",{timeZone: "Asia/Singapore"})
     const todayDate = new Date(date);
     const Day = todayDate.getDay();
     function embed(description){
