@@ -42,7 +42,7 @@ client.distube
           switch (reaction.emoji.name) {
             case "⏹":
               client.distube.stop(message);
-              const stopEmbed = new Discord.MessageEmbed()
+              const stopEmbed = new discord.MessageEmbed()
                 .setColor("#0099ff")
                 .setTitle("STOPPED")
                 .setDescription("Thanks for using the bot bye! byee!👋");
