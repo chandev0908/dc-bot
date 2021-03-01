@@ -112,37 +112,38 @@ function embedBuilder(description){
 }
 //Subject Reminder for weebus
 const cron = require('cron');
+let roleId = "815852692902510603"
 //Schedule for CC3 every tuesday & thursday
 let scheduleInCC3 = new cron.CronJob('55 6 * * 2,4', () => {
-  embedBuilder(`In 5mins you classes will start in CC3. @everyone`);
+  embedBuilder(`In 5mins you classes will start in CC3. <@&${roleId}>`);
 }, "Asia/Singapore");
 //Schedule for SocSci/Rizal
 let scheduleInRizal = new cron.CronJob('25 8 * * 3,5', () => {
-  embedBuilder(`In 5mins you classes will start in Rizal. Goodluck pray for your life @everyone`);
+  embedBuilder(`In 5mins you classes will start in Rizal. Goodluck pray for your life <@&${roleId}>`);
 }, "Asia/Singapore");
 //Schedule for PSY
 let scheduleInPsy = new cron.CronJob('55 9 * * 3,5', () => {
-  embedBuilder(`In 5mins you classes will start in Psy. @everyone`);
+  embedBuilder(`In 5mins you classes will start in Psy. <@&${roleId}>`);
 }, "Asia/Singapore");
 //Schedule for PE
 let scheduleInPE = new cron.CronJob('55 9 * * 4', () => {
-  embedBuilder(`In 5mins you classes will start in PE. @everyone`);
+  embedBuilder(`In 5mins you classes will start in PE. <@&${roleId}>`);
 }, "Asia/Singapore");
 //Schedule for HCI
 let scheduleInHCI = new cron.CronJob('55 12 * * 2,4', () => {
-  embedBuilder(`In 5mins you classes will start in HCI. @everyone`);
+  embedBuilder(`In 5mins you classes will start in HCI. <@&${roleId}>`);
 }, "Asia/Singapore");
 //Schedule for Publc Speaking/GE ELECT
 let scheduleInPS = new cron.CronJob('55 12 * * 3,5', () => {
-  embedBuilder(`In 5mins you classes will start in Public Speaking. @everyone`);
+  embedBuilder(`In 5mins you classes will start in Public Speaking.<@&${roleId}>`);
 }, "Asia/Singapore");
 //Schedule for MATH
 let scheduleInMath = new cron.CronJob('25 14 * * 2,4', () => {
-  embedBuilder(`In 5mins you classes will start in Math. @everyone`);
+  embedBuilder(`In 5mins you classes will start in Math. <@&${roleId}>`);
 }, "Asia/Singapore");
 //Schedule for NSTP
 let scheduleInNSTP = new cron.CronJob('25 14 * * 3,5', () => {
-  embedBuilder(`In 5mins you classes will start in NSTP. @everyone`);
+  embedBuilder(`In 5mins you classes will start in NSTP. <@&${roleId}>`);
 }, "Asia/Singapore");
 scheduleInCC3.start();
 scheduleInRizal.start();
