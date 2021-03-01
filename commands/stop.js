@@ -1,3 +1,4 @@
+const Discord = require("discord.js");
 module.exports.run = async (client, message, args) => {
   if (!message.member.voice.channel)
     return message.channel.send(
@@ -8,8 +9,13 @@ module.exports.run = async (client, message, args) => {
     if (queue) {
       client.distube.stop(message);
       message.react("🛑");
+      const stopEmbed = new Discord.MessageEmbed()
+        .setColor("#0099ff")
+        .setTitle("STOPPED")
+        .setDescription("Thanks for using the bot bye! byee!👋");
+      message.channel.send(stopEmbed);
     } else if (!queue) {
-      client.distube.stop(message);
+      return;
     }
   } catch (err) {
     return err;

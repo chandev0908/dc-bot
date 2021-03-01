@@ -1,6 +1,6 @@
 module.exports.run = (client, message) => {
   message.channel.send(
-    '```Commands:\nTo play music you can use the command .play or .p\nTo skip you can use the command .skip or .s\nTo stop you can use the command .stop\nTo send temporary message you can use the command .temp or .t followed by the duration \nEx. ".temp 15 Hello" or ".t 15 Hello"  after 15secs the message will be deleted \nTo see the features of the bot you can use the command .features or .f```'
+    '```COMMANDS FOR MUSIC PLAYER\n.play or .p for playing music\n.autoplay for auto que recommended music\n.stop or .s for stopping the music/queue\n.queue or .q to see what music in on que\n.next or .n for skipping music\n.pause to pause the music\n.resume to resume the music\nNOTE: YOU CAN USE THE EMOJI BELOW THE EMBED MESSAGE\n⏹ equivalent to .stop command\n⏯️ equivalent to .pause and .resume \n⏭️ equivalent to .next\nFOR R18 COMMANDS YOU CAN TYPE .hcommands or .H```'
   );
 };
 
