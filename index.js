@@ -107,7 +107,6 @@ function embedBuilder(description){
 }
 //Subject Reminder for weebus
 const cron = require('cron');
-const server = require("youtube-notification/src/server");
 //Schedule for CC3 every tuesday & thursday
 let scheduleInCC3 = new cron.CronJob('55 6 * * 2,4', () => {
   embedBuilder(`In 5mins you classes will start in CC3. @everyone`);
