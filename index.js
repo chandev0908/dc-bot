@@ -108,13 +108,13 @@ function embedBuilder(description){
       .setColor("#0099ff")
       .setTitle("Class Schedule Reminder!")
       .setDescription(description)
-  return client.channels.cache.get(process.env.SERVER_CHANNEL_ID_GENERAL).send(reminderEmbed);
+  return client.channels.cache.get("805803334509527100").send(reminderEmbed);
 }
 //Subject Reminder for weebus
 const cron = require('cron');
-let roleId = "815852692902510603"
+let roleId = "816085078320218133"
 //Schedule for CC3 every tuesday & thursday
-let scheduleInCC3 = new cron.CronJob('55 6 * * 2,4', () => {
+let scheduleInCC3 = new cron.CronJob('51 7 * * 2,4', () => {
   embedBuilder(`In 5mins you classes will start in CC3. <@&${roleId}>`);
 }, "Asia/Singapore");
 //Schedule for SocSci/Rizal
