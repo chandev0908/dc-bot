@@ -178,7 +178,7 @@ client.on("ready", () => {
 })
 
 const notifier = new YouTubeNotifier({
-  hubCallback: 'https://bot-test312123.herokuapp.com/yt',
+  hubCallback: 'https://sleepy-sands-66607.herokuapp.com/yt',
   secret: 'JOIN_MY_SERVER_OR_DIE'
 });
 
