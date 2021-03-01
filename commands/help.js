@@ -6,5 +6,5 @@ module.exports.run = (client, message) => {
 
 module.exports.config = {
   name: "help",
-  aliases: ["h"],
+  aliases: [],
 };

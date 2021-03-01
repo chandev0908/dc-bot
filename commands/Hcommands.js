@@ -4,5 +4,5 @@ module.exports.run = (client, message) => {
 
 module.exports.config = {
   name: "hcommands",
-  aliases: ["H"],
+  aliases: [],
 };
