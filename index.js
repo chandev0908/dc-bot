@@ -114,7 +114,7 @@ function embedBuilder(description){
 const cron = require('cron');
 let roleId = "816085078320218133"
 //Schedule for CC3 every tuesday & thursday
-let scheduleInCC3 = new cron.CronJob('51 7 * * 2,4', () => {
+let scheduleInCC3 = new cron.CronJob('55 7 * * 2,4', () => {
   embedBuilder(`In 5mins you classes will start in CC3. <@&${roleId}>`);
 }, "Asia/Singapore");
 //Schedule for SocSci/Rizal
