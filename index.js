@@ -117,8 +117,6 @@ let roleId = "815852692902510603"
 let scheduleInCC3 = new cron.CronJob('55 6 * * 2,4', () => {
   embedBuilder(`In 5mins you classes will start in CC3. <@&${roleId}>`);
 }, undefined, true, "Asia/Singapore");
-console.log(scheduleInCC3)
-
 //Schedule for SocSci/Rizal
 let scheduleInRizal = new cron.CronJob('25 8 * * 3,5', () => {
   embedBuilder(`In 5mins you classes will start in Rizal. Goodluck pray for your life <@&${roleId}>`);
