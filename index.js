@@ -108,13 +108,13 @@ function embedBuilder(description){
       .setColor("#0099ff")
       .setTitle("Class Schedule Reminder!")
       .setDescription(description)
-  return client.channels.cache.get("805803334509527100").send(reminderEmbed);
+  return client.channels.cache.get(process.env.SERVER_CHANNEL_ID_GENERAL).send(reminderEmbed);
 }
 //Subject Reminder for weebus
 const cron = require('cron');
-let roleId = "816085078320218133"
+let roleId = "815852692902510603"
 //Schedule for CC3 every tuesday & thursday
-let scheduleInCC3 = new cron.CronJob('06 8 * * 2,4', () => {
+let scheduleInCC3 = new cron.CronJob('55 6 * * 2,4', () => {
   embedBuilder(`In 5mins you classes will start in CC3. <@&${roleId}>`);
 }, undefined, true, "Asia/Singapore");
 console.log(scheduleInCC3)
@@ -122,31 +122,31 @@ console.log(scheduleInCC3)
 //Schedule for SocSci/Rizal
 let scheduleInRizal = new cron.CronJob('25 8 * * 3,5', () => {
   embedBuilder(`In 5mins you classes will start in Rizal. Goodluck pray for your life <@&${roleId}>`);
-}, "Asia/Singapore");
+}, undefined, true, "Asia/Singapore");
 //Schedule for PSY
 let scheduleInPsy = new cron.CronJob('55 9 * * 3,5', () => {
   embedBuilder(`In 5mins you classes will start in Psy. <@&${roleId}>`);
-}, "Asia/Singapore");
+}, undefined, true, "Asia/Singapore");
 //Schedule for PE
 let scheduleInPE = new cron.CronJob('55 9 * * 4', () => {
   embedBuilder(`In 5mins you classes will start in PE. <@&${roleId}>`);
-}, "Asia/Singapore");
+}, undefined, true, "Asia/Singapore");
 //Schedule for HCI
 let scheduleInHCI = new cron.CronJob('55 12 * * 2,4', () => {
   embedBuilder(`In 5mins you classes will start in HCI. <@&${roleId}>`);
-}, "Asia/Singapore");
+}, undefined, true, "Asia/Singapore");
 //Schedule for Publc Speaking/GE ELECT
 let scheduleInPS = new cron.CronJob('55 12 * * 3,5', () => {
   embedBuilder(`In 5mins you classes will start in Public Speaking.<@&${roleId}>`);
-}, "Asia/Singapore");
+}, undefined, true, "Asia/Singapore");
 //Schedule for MATH
 let scheduleInMath = new cron.CronJob('25 14 * * 2,4', () => {
   embedBuilder(`In 5mins you classes will start in Math. <@&${roleId}>`);
-}, "Asia/Singapore");
+}, undefined, true, "Asia/Singapore");
 //Schedule for NSTP
 let scheduleInNSTP = new cron.CronJob('25 14 * * 3,5', () => {
   embedBuilder(`In 5mins you classes will start in NSTP. <@&${roleId}>`);
-}, "Asia/Singapore");
+}, undefined, true, "Asia/Singapore");
 scheduleInCC3.start();
 scheduleInRizal.start();
 scheduleInPsy.start();
