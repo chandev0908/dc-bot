@@ -195,9 +195,8 @@ const app = express();
 var server = http.createServer(app);
 
 app.get("/", (request, response) => {
-  console.log(`Ping Received.`);
   response.writeHead(200, { "Content-Type": "text/plain" });
-  response.end("DISCORD BOT YO");
+  response.end("Zin Discord Bot");
 });
 
 const listener = server.listen(process.env.PORT, function() {
