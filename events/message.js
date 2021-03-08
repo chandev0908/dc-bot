@@ -1,3 +1,4 @@
+const ms = require('ms');
 module.exports = async (bot, message) => {
 	if (message.author.bot) return;
 
@@ -12,8 +13,20 @@ module.exports = async (bot, message) => {
 
 	if (!message.content.startsWith(prefix)) return;
 	const commandfile = bot.commands.get(cmd.slice(prefix.length).toString().toLowerCase()) || bot.commands.get(bot.aliases.get(cmd.slice(prefix.length).toString().toLowerCase()));;
+	console.log(commandfile.config.name)
+	console.log(commandfile)
+
+	if(bot.cooldown.has(`${message.author.id}-${commandfile.config.name}`)){
+		return message.channel.send(`You can use this command in ${ms(bot.cooldown.get(`${message.author.id}-${commandfile.config.name}`) - Date.now(), {long: true})}`);
+	}
 	if (commandfile) {
 		commandfile.run(bot, message, args);
+		if(commandfile.config.cooldown) {
+			bot.cooldown.set(`${message.author.id}-${commandfile.config.name}`, Date.now() + commandfile.config.cooldown)
+			setTimeout(() => {
+				bot.cooldown.delete(`${message.author.id}-${commandfile.config.cooldown}`)
+			}, commandfile.config.cooldown)
+		}
 	}
 
 }
