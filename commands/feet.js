@@ -11,4 +11,5 @@ module.exports.run = (client, message) => {
 module.exports.config = {
   name: "feet",
   aliases: [],
+  cooldown: 5000
 };
