@@ -1,4 +1,3 @@
-const Duration = require('humanize-duration');
 module.exports = async (bot, message) => {
 	if (message.author.bot) return;
 
