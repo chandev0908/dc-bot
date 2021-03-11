@@ -92,7 +92,15 @@ client.distube
   })
   .on("empty", (message) =>
     message.channel.send("Channel is empty. Leaving the channel")
-  );
+  )
+  .on("error", (message, err) => 
+    message.channel.send("An error encountered: " + err))
+
+  .on("finish", message => message.channel.send("No more song in queue"))
+
+  .on("addList", (message, queue, playlist) => message.channel.send(
+    `Added \`${playlist.name}\` playlist (${playlist.songs.length} songs) to queue\n${status(queue)}`
+  ));
 
 require("./utils/loadEvents")(client);
 
