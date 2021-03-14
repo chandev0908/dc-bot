@@ -345,7 +345,7 @@ client.cooldown = new Discord.Collection();
 
 loadCommands(client);
 
-client.login("ODA1ODAzMDU3OTY2NDgxNDY4.YBgMlA.Eqp-PYFHVyk2N-drsihQsvUEgu4");
+client.login(process.env.TOKEN);
 
 function embed69(description) {
   const reminderEmbed = new Discord.MessageEmbed()
