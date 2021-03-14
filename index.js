@@ -26,7 +26,7 @@ async function embedder(client, message, title, description, thumbnail) {
 }
 client.distube
   .on("playSong", (message, queue, song) => {
-      playsongyes(message, queue, song);
+    playsongyes(message, queue, song);
   })
   .on("addSong", (message, queue, song) => {
     const addSongEmbed = new Discord.MessageEmbed()
@@ -295,7 +295,9 @@ function curembed(message) {
       .setDescription(
         `Playing ${song.name}\nDuration: **${
           song.formattedDuration
-        }**\nRequested by: ${song.user}\nAutoplay: ${
+        }**\nDuration: ${queue.formattedCurrentTime} / ${
+          song.formattedDuration
+        }\nRequested by: ${song.user}\nAutoplay: ${
           queue.autoplay ? "✅" : "❌"
         }\nVolume: ${queue.volume}%\n Loop: ${
           queue.repeatMode
