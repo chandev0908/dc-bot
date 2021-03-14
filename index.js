@@ -11,6 +11,15 @@ client.distube = new DisTube(client, {
   searchSongs: false,
   emitNewSongOnly: true,
 });
+client.on('message', (message) => {
+  if (!message.content.startsWith(".")) return;
+  const args = message.content.slice(".".length).trim().split(/ +/g);
+  const command = args.shift();
+  if ([`3d`, `bassboost`, `echo`, `karaoke`, `nightcore`, `vaporwave`].includes(command)) {
+      let filter = client.distube.setFilter(message, command);
+      message.channel.send("Current queue filter: " + (filter || "Off"));
+  }
+});
 
 async function embedder(client, message, title, description, thumbnail) {
   const embed = new Discord.MessageEmbed()
@@ -73,9 +82,11 @@ async function playsongyes(message, queue, song) {
       .setDescription(
         `Playing ${song.name}\nDuration: **${
           song.formattedDuration
-        }**\nRequested by: ${song.user}\nAutoplay: ${
-          queue.autoplay ? "✅" : "❌"
-        }\nVolume: ${queue.volume}%\n Loop: ${
+        }**\nDuration ${queue.formattedCurrentTime} / ${song.formattedDuration}\nRequested by: ${
+          song.user
+        }\nAutoplay: ${queue.autoplay ? "✅" : "❌"}\nVolume: ${
+          queue.volume
+        }%\n Loop: ${
           queue.repeatMode
             ? queue.repeatMode === 2
               ? "✅ Queue"
@@ -224,27 +235,61 @@ async function playsongyes(message, queue, song) {
           break;
         case "🎵":
           reaction.users.remove(user).catch(console.error);
-          if (queue) {
-            client.distube.getQueue(message);
-            const queueEmbed = new Discord.MessageEmbed()
-              .setTitle("Queue")
-              .setColor("#0099ff")
-              .setDescription(
-                "Current Queue\n" +
-                  queue.songs
-                    .map(
-                      (song, id) =>
-                        `${id + 1}. [${song.name}] - ${song.formattedDuration}`
-                    )
-                    .slice(0, 10)
-                    .join("\n")
-              );
-            message.channel
-              .send(queueEmbed)
-              .then((msg) =>
-                msg.delete({ timeout: 3000 }).catch(console.error)
-              );
+          let currentPage = 0;
+          if (!queue)
+            return embedbuilder(
+              client,
+              message,
+              "RED",
+              "There is nothing playing!"
+            ).then((msg) => msg.delete({ timeout: 5000 }).catch(console.error));
+
+          const embeds = QueueEmbed(queue.songs);
+          const queueEmbed = await message.channel.send(
+            `
+      **Current Page - ${currentPage + 1}/${embeds.length}**`,
+            embeds[currentPage]
+          );
+          try {
+            await queueEmbed.react("⬅️");
+            await queueEmbed.react("⏹");
+            await queueEmbed.react("➡️");
+          } catch (error) {
+            console.error(error);
           }
+          const filter = (reaction, user) =>
+            ["⬅️", "⏹", "➡️"].includes(reaction.emoji.name) &&
+            message.author.id === user.id;
+          const collector = queueEmbed.createReactionCollector(filter, {
+            time: 60000,
+          });
+          collector.on("collect", async (reaction, user) => {
+            try {
+              if (reaction.emoji.name === "➡️") {
+                if (currentPage < embeds.length - 1) {
+                  currentPage++;
+                  queueEmbed.edit(
+                    `**Current Page - ${currentPage + 1}/${embeds.length}**`,
+                    embeds[currentPage]
+                  );
+                }
+              } else if (reaction.emoji.name === "⬅️") {
+                if (currentPage !== 0) {
+                  --currentPage;
+                  queueEmbed.edit(
+                    `**Current Page - ${currentPage + 1}/${embeds.length}**`,
+                    embeds[currentPage]
+                  );
+                }
+              } else {
+                collector.stop();
+                reaction.message.reactions.removeAll();
+              }
+              await reaction.users.remove(message.author.id);
+            } catch (error) {
+              console.error(error);
+            }
+          });
           break;
 
         case "🔁":
@@ -295,9 +340,7 @@ function curembed(message) {
       .setDescription(
         `Playing ${song.name}\nDuration: **${
           song.formattedDuration
-        }**\nDuration: ${queue.formattedCurrentTime} / ${
-          song.formattedDuration
-        }\nRequested by: ${song.user}\nAutoplay: ${
+        }**\nDuration ${queue.formattedCurrentTime} / ${song.formattedDuration}\nRequested by: ${song.user}\nAutoplay: ${
           queue.autoplay ? "✅" : "❌"
         }\nVolume: ${queue.volume}%\n Loop: ${
           queue.repeatMode
@@ -336,6 +379,33 @@ function embedbuilder(client, message, color, title, description, thumbnail) {
     if (description) embed.setDescription(description);
     if (thumbnail) embed.setThumbnail(thumbnail);
     return message.channel.send(embed);
+  } catch (error) {
+    console.error;
+  }
+}
+// For queue
+function QueueEmbed(queue) {
+  try {
+    let embeds = [];
+    let k = 10;
+    //defining each Pages
+    for (let i = 0; i < queue.length; i += 10) {
+      const current = queue.slice(i, k);
+      let j = i;
+      k += 10;
+      const info = current
+        .map((track) => `**${++j} -** [\`${track.name}\`](${track.url})`)
+        .join("\n");
+      const embed = new Discord.MessageEmbed()
+        .setTitle("Queue")
+        .setColor("#0099ff")
+        .setDescription(
+          `**Playing - [\`${queue[0].name}\`](${queue[0].url})**\n\n${info}`
+        );
+      embeds.push(embed);
+    }
+    //returning the Embed
+    return embeds;
   } catch (error) {
     console.error;
   }
