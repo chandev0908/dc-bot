@@ -10,6 +10,7 @@ module.exports.run = async (client, message, args) => {
   if (queue) {
     client.distube.getQueue(message);
     const queueEmbed = new Discord.MessageEmbed()
+      .setTitle("Queue")
       .setColor("#0099ff")
       .setDescription(
         "Current Queue\n" +
@@ -18,6 +19,7 @@ module.exports.run = async (client, message, args) => {
               (song, id) =>
                 `${id + 1}. [${song.name}] - ${song.formattedDuration}`
             )
+            .slice(0, 10)
             .join("\n")
       );
     message.channel.send(queueEmbed);
