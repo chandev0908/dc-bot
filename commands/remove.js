@@ -5,16 +5,19 @@ module.exports.run = async (client, message, args) => {
     );
   let queue = client.distube.getQueue(message);
   let as = queue.songs;
-
   const music = args.join(" ");
-  const queueIndex = parseInt(music) - 1;
-  console.log(queueIndex);
-  const idIndex = as.map((curr, index) => {
+  let queueIndex = parseInt(music)-1;
+  let idIndex = as.map((curr, index) => {
     return index;
   });
-  const arr = [...idIndex];
-  var index = as.indexOf(queueIndex);
-  as.splice(index, 1);
+  let arr = [...idIndex];
+  let index = arr.indexOf(queueIndex);
+  console.log(index)
+  if(index > -1){
+    as.splice(index, 1);
+  }else if(index === -1){
+      message.channel.send("Invalid index queue");
+  }
 };
 
 module.exports.config = {
