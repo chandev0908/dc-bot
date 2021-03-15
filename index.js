@@ -11,13 +11,57 @@ client.distube = new DisTube(client, {
   searchSongs: false,
   emitNewSongOnly: true,
 });
-client.on('message', (message) => {
+client.on("message", (message) => {
   if (!message.content.startsWith(".")) return;
   const args = message.content.slice(".".length).trim().split(/ +/g);
   const command = args.shift();
-  if ([`3d`, `bassboost`, `echo`, `karaoke`, `nightcore`, `vaporwave`].includes(command)) {
-      let filter = client.distube.setFilter(message, command);
-      message.channel.send("Current queue filter: " + (filter || "Off"));
+  if (
+    [
+      `3d`,
+      `bassboost`,
+      `echo`,
+      `karaoke`,
+      `nightcore`,
+      `vaporwave`,
+      `flanger`,
+      `gate`,
+      `haas`,
+      `reverse`,
+      `surround`,
+      `mcompand`,
+      `phaser`,
+      `tremolo`,
+      `earwax`,
+    ].includes(command)
+  ) {
+    let filter = client.distube.setFilter(message, command);
+    message.channel.send("Current queue filter: " + (filter || "Off"));
+  } else if (command == "np" || command === "nowplaying") {
+    let queue = client.distube.getQueue(message);
+    if (!queue)
+      return embedbuilder(
+        client,
+        message,
+        "#0099ff",
+        "There is nothing playing!"
+      ).then((msg) => msg.delete({ timeout: 5000 }).catch(console.error));
+
+    let cursong = queue.songs[0];
+
+    return embedbuilder(
+      client,
+      message,
+      "#0099ff",
+      "Current Song!",
+      `[${cursong.name}](${cursong.url})\n\nPlaying for: \`${(
+        Math.floor((queue.currentTime / 1000 / 60) * 100) / 100
+      )
+        .toString()
+        .replace(".", ":")} Minutes\`\n\nDuration: \`${
+        cursong.formattedDuration
+      }\``,
+      cursong.thumbnail
+    );
   }
 });
 
@@ -82,11 +126,11 @@ async function playsongyes(message, queue, song) {
       .setDescription(
         `Playing ${song.name}\nDuration: **${
           song.formattedDuration
-        }**\nDuration ${queue.formattedCurrentTime} / ${song.formattedDuration}\nRequested by: ${
-          song.user
-        }\nAutoplay: ${queue.autoplay ? "✅" : "❌"}\nVolume: ${
-          queue.volume
-        }%\n Loop: ${
+        }**\nDuration ${queue.formattedCurrentTime} / ${
+          song.formattedDuration
+        }\nRequested by: ${song.user}\nAutoplay: ${
+          queue.autoplay ? "✅" : "❌"
+        }\nVolume: ${queue.volume}%\n Loop: ${
           queue.repeatMode
             ? queue.repeatMode === 2
               ? "✅ Queue"
@@ -340,7 +384,9 @@ function curembed(message) {
       .setDescription(
         `Playing ${song.name}\nDuration: **${
           song.formattedDuration
-        }**\nDuration ${queue.formattedCurrentTime} / ${song.formattedDuration}\nRequested by: ${song.user}\nAutoplay: ${
+        }**\nDuration ${queue.formattedCurrentTime} / ${
+          song.formattedDuration
+        }\nRequested by: ${song.user}\nAutoplay: ${
           queue.autoplay ? "✅" : "❌"
         }\nVolume: ${queue.volume}%\n Loop: ${
           queue.repeatMode
