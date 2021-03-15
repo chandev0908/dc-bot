@@ -169,6 +169,12 @@ async function playsongyes(message, queue, song) {
     collector.on("collect", async (reaction, user) => {
       let isPaused = await client.distube.isPaused(message);
       let queue = await client.distube.getQueue(message);
+      if (!message.member.voice.channel) {
+        reaction.users.remove(user).catch(console.error);
+        return message.channel.send(
+          "You must be in a voice channel to use the reaction commands."
+        );
+      }
       if (!queue) return;
       const member = message.guild.member(user);
       if (
@@ -463,7 +469,7 @@ client.cooldown = new Discord.Collection();
 
 loadCommands(client);
 
-client.login(process.env.TOKEN);
+client.login("ODA1ODAzMDU3OTY2NDgxNDY4.YBgMlA.sBrkZy7F0LodmSeFZ4iHJeFNuas");
 
 function embed69(description) {
   const reminderEmbed = new Discord.MessageEmbed()
@@ -476,6 +482,7 @@ function embed69(description) {
 }
 //Subject Reminder for weebus
 const cron = require("cron");
+const { indexOf } = require("ffmpeg-static");
 let roleId = "815852692902510603";
 //Schedule for CC3 every tuesday & thursday
 let scheduleInCC3 = new cron.CronJob(
