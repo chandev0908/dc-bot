@@ -117,7 +117,21 @@ client.distube
 require("./utils/loadEvents")(client);
 
 //this function is for playing the song
+
 async function playsongyes(message, queue, song) {
+  const emojiList = {
+    PlayPause: "827947790490402836",
+    Next: "827978880886898759",
+    Backward: "827951619488481282",
+    Forward: "827932529377411123",
+    Stop: "827950316985122866",
+    Loop: "827955393769504820",
+    Queue: "827956998846283856",
+    VolumeUp: "827953728031162378",
+    VolumeDown: "827953728169574431",
+    Refresh: "827952533527330836",
+  };
+  playingMessage;
   try {
     let isPaused = await client.distube.isPaused(message);
     let embed1 = new Discord.MessageEmbed()
@@ -145,24 +159,34 @@ async function playsongyes(message, queue, song) {
       .setThumbnail(song.thumbnail);
     var playingMessage = await message.channel.send(embed1);
     try {
-      await playingMessage.react("⏭");
-      await playingMessage.react("⏯️");
-      await playingMessage.react("⏹");
-      await playingMessage.react("◀️");
-      await playingMessage.react("▶️");
-      await playingMessage.react("🔉");
-      await playingMessage.react("🔊");
-      await playingMessage.react("🔁");
-      await playingMessage.react("🎵");
+      await playingMessage.react(emojiList.Stop);
+      await playingMessage.react(emojiList.Next);
+      await playingMessage.react(emojiList.PlayPause);
+      await playingMessage.react(emojiList.Backward);
+      await playingMessage.react(emojiList.Forward);
+      await playingMessage.react(emojiList.VolumeDown);
+      await playingMessage.react(emojiList.VolumeUp);
+      await playingMessage.react(emojiList.Loop);
+      await playingMessage.react(emojiList.Queue);
+      await playingMessage.react(emojiList.Refresh);
     } catch (error) {
       message.reply("Missing permissions, i need to add reactions!");
       console.log(error);
     }
-
+    const emojiName = {
+      PlayPause: client.emojis.cache.get(emojiList.PlayPause).name,
+      Next: client.emojis.cache.get(emojiList.Next).name,
+      Backward: client.emojis.cache.get(emojiList.Backward).name,
+      Forward: client.emojis.cache.get(emojiList.Forward).name,
+      Stop: client.emojis.cache.get(emojiList.Stop).name,
+      Loop: client.emojis.cache.get(emojiList.Loop).name,
+      Queue: client.emojis.cache.get(emojiList.Queue).name,
+      VolumeUp: client.emojis.cache.get(emojiList.VolumeUp).name,
+      VolumeDown: client.emojis.cache.get(emojiList.VolumeDown).name,
+      Refresh: client.emojis.cache.get(emojiList.Refresh).name,
+    };
     const filter = (reaction, user) =>
-      ["⏭", "⏹", "⏯️", "🔉", "🔊", "◀️", "▶️", "🔁", "🎵"].includes(
-        reaction.emoji.name
-      ) && user.id !== message.client.user.id;
+      [emojiName] && user.id !== message.client.user.id;
     var collector = playingMessage.createReactionCollector(filter, {
       time: song.duration > 0 ? song.duration * 1000 : 600000,
     });
@@ -184,7 +208,7 @@ async function playsongyes(message, queue, song) {
         return;
 
       switch (reaction.emoji.name) {
-        case "⏭":
+        case emojiName.Next:
           client.distube.skip(message);
           embedbuilder(
             client,
@@ -198,7 +222,7 @@ async function playsongyes(message, queue, song) {
           playingMessage.reactions.removeAll().catch(console.error);
           break;
 
-        case "⏹":
+        case emojiName.Stop:
           client.distube.stop(message);
           const stopEmbed = new Discord.MessageEmbed()
             .setColor("#0099ff")
@@ -208,7 +232,7 @@ async function playsongyes(message, queue, song) {
           playingMessage.reactions.removeAll().catch(console.error);
           break;
 
-        case "🔉":
+        case emojiName.VolumeDown:
           reaction.users.remove(user).catch(console.error);
           await client.distube.setVolume(message, Number(queue.volume) - 10);
           embedbuilder(
@@ -221,7 +245,7 @@ async function playsongyes(message, queue, song) {
           await playingMessage.edit(curembed(message)).catch(console.error);
           break;
 
-        case "🔊":
+        case emojiName.VolumeUp:
           reaction.users.remove(user).catch(console.error);
           await client.distube.setVolume(message, Number(queue.volume) + 10);
           embedbuilder(
@@ -234,7 +258,7 @@ async function playsongyes(message, queue, song) {
           await playingMessage.edit(curembed(message)).catch(console.error);
           break;
 
-        case "◀️":
+        case emojiName.Backward:
           reaction.users.remove(user).catch(console.error);
           let seektime = queue.currentTime - 10000;
           if (seektime < 0) seektime = 0;
@@ -250,7 +274,7 @@ async function playsongyes(message, queue, song) {
 
           break;
 
-        case "▶️":
+        case emojiName.Forward:
           reaction.users.remove(user).catch(console.error);
           let seektime2 = queue.currentTime + 10000;
           if (seektime2 >= queue.songs[0].duration * 1000) {
@@ -267,7 +291,7 @@ async function playsongyes(message, queue, song) {
             `Seeked the song for \`+10 seconds\``
           ).then((msg) => msg.delete({ timeout: 3000 }).catch(console.error));
           break;
-        case "⏯️":
+        case emojiName.PlayPause:
           reaction.users.remove(user).catch(console.error);
           if (isPaused) {
             client.distube.resume(message, queue);
@@ -283,7 +307,7 @@ async function playsongyes(message, queue, song) {
             `The music was ${isPaused ? "resume" : "paused"}`
           ).then((msg) => msg.delete({ timeout: 3000 }).catch(console.error));
           break;
-        case "🎵":
+        case emojiName.Queue:
           reaction.users.remove(user).catch(console.error);
           let currentPage = 0;
           if (!queue)
@@ -342,7 +366,7 @@ async function playsongyes(message, queue, song) {
           });
           break;
 
-        case "🔁":
+        case emojiName.Loop:
           reaction.users.remove(user).catch(console.error);
           client.distube.setRepeatMode(message);
           playingMessage.edit(curembed(message)).catch(console.error);
@@ -365,6 +389,9 @@ async function playsongyes(message, queue, song) {
                 : "Off"
             }`
           ).then((msg) => msg.delete({ timeout: 3000 }).catch(console.error));
+          break;
+        case emojiName.Refresh:
+          playingMessage.edit(curembed(message)).catch(console.error);
           break;
         default:
           reaction.users.remove(user).catch(console.error);
