@@ -4,7 +4,6 @@ module.exports.run = (client, message) => {
     const data = await akaneko.nsfw.hentai();
     return message.channel.send(data);
   }
-  message.delete({ timeout: 1500 });
   neko();
 };
 
