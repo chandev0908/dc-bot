@@ -367,7 +367,6 @@ async function playsongyes(message, queue, song) {
           break;
 
         case emojiName.Loop:
-          reaction.users.remove(user).catch(console.error);
           client.distube.setRepeatMode(message);
           playingMessage.edit(curembed(message)).catch(console.error);
           embedbuilder(
@@ -391,6 +390,7 @@ async function playsongyes(message, queue, song) {
           ).then((msg) => msg.delete({ timeout: 3000 }).catch(console.error));
           break;
         case emojiName.Refresh:
+          reaction.users.remove(user).catch(console.error);
           playingMessage.edit(curembed(message)).catch(console.error);
           break;
         default:
