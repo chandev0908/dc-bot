@@ -8,11 +8,12 @@
   },
   "dependencies": {
     "@discordjs/opus": "^0.3.3",
+    "@distube/spotify": "^0.1.0",
     "akaneko": "^5.0.1",
     "cron": "^1.8.2",
     "discord.js": "^12.5.1",
     "discord.js-commando": "^0.11.1",
-    "distube": "^2.8.8",
+    "distube": "^2.8.13",
     "express": "^4.17.1",
     "ffmpeg-static": "^4.2.7",
     "ms": "^2.1.3",

@@ -10,6 +10,8 @@ const DisTube = require("distube");
 client.distube = new DisTube(client, {
   searchSongs: false,
   emitNewSongOnly: true,
+  youtubeDL: true,
+  updateYouTubeDL: true
 });
 client.on("message", (message) => {
   if (!message.content.startsWith(".")) return;
