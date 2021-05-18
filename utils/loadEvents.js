@@ -10,4 +10,4 @@ module.exports = bot => {
             delete require.cache[require.resolve(`../events/${file}`)];
         });
     });
- }
+}
