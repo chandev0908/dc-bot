@@ -6,12 +6,12 @@ module.exports.run = async (client, message, args) => {
   function embed(description) {
     const schedEmbed = new Discord.MessageEmbed()
       .setColor("#0099ff")
-      .setTitle("Class Schedule Today!")
+      .setTitle("Exam Schedule!")
       .setDescription(description);
     return message.channel.send(schedEmbed);
   }
   // if(Day === 2){
-  embed("**May 20**\n08:00 - 9:30 MATH\n12:00 - 13:30\n16:00 - 17:30 PE\n**MAY 21**\n14:00 - 15:30 HCI");
+  embed("**May 20**\n08:00 - 9:30 MATH\n12:00 - 13:30 Public Speaking\n16:00 - 17:30 PE\n**MAY 21**\n14:00 - 15:30 HCI");
   // }
   // }else if(Day === 3){
   //     embed("08:30-10:00 Rizal\n10:00-11:30 PSY\n13:00-14:30 Public Speaking\n14:30-16:00 NSTP");

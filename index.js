@@ -509,176 +509,255 @@ function embed69(description) {
 }
 //Subject Reminder for weebus
 const cron = require("cron");
-const { indexOf } = require("ffmpeg-static");
-let roleId = "815852692902510603";
-//Schedule for CC3 every tuesday & thursday
-let scheduleInCC3 = new cron.CronJob(
-  "55 6 * * 2,4",
+let examMATHb = new cron.CronJob(
+  "50 7 * * 4",
   () => {
-    embed69(`In 5mins your class will start in CC3. <@&${roleId}>`);
+    embed69(`In 10 minutes your exam will start in MATH. <@&${roleId}>`);
   },
   undefined,
   true,
   "Asia/Singapore"
 );
-let scheduleInCC3Now = new cron.CronJob(
-  "00 7 * * 2,4",
+let examMATH = new cron.CronJob(
+  "00 8 * * 4",
   () => {
-    embed69(`Join to your class call now in CC3. <@&${roleId}>`);
+    embed69(`Start your exam in MATH. Goodluck <@&${roleId}>`);
   },
   undefined,
   true,
   "Asia/Singapore"
 );
-//Schedule for SocSci/Rizal
-let scheduleInRizal = new cron.CronJob(
-  "25 8 * * 3,5",
+let examPSb = new cron.CronJob(
+  "50 11 * * 4",
   () => {
-    embed69(
-      `In 5mins your class will start in Rizal. Goodluck pray for your life <@&${roleId}>`
-    );
+    embed69(`In 10 minutes your exam will start in Public Speaking. <@&${roleId}>`);
   },
   undefined,
   true,
   "Asia/Singapore"
 );
-let scheduleInRizalNow = new cron.CronJob(
-  "30 8 * * 3,5",
+let examPS = new cron.CronJob(
+  "00 12 * * 4",
   () => {
-    embed69(`Join to your class call now in Rizal. <@&${roleId}>`);
+    embed69(`Start your exam in Public Speaking. Goodluck <@&${roleId}>`);
   },
   undefined,
   true,
   "Asia/Singapore"
 );
-//Schedule for PSY
-let scheduleInPsy = new cron.CronJob(
-  "55 9 * * 3,5",
+let examPEb = new cron.CronJob(
+  "50 15 * * 4",
   () => {
-    embed69(`In 5mins your class will start in Psy. <@&${roleId}>`);
+    embed69(`In 10 minutes your exam will start in PE. <@&${roleId}>`);
   },
   undefined,
   true,
   "Asia/Singapore"
 );
-let scheduleInPsyNow = new cron.CronJob(
-  "00 10 * * 3,5",
+let examPE = new cron.CronJob(
+  "00 16 * * 4",
   () => {
-    embed69(`Join to your class call now in Psy. <@&${roleId}>`);
+    embed69(`Start your exam in PE. Goodluck <@&${roleId}>`);
   },
   undefined,
   true,
   "Asia/Singapore"
 );
-//Schedule for PE
-let scheduleInPE = new cron.CronJob(
-  "55 9 * * 4",
+let examHCIb = new cron.CronJob(
+  "50 13 * * 5",
   () => {
-    embed69(`In 5mins your class will start in PE. <@&${roleId}>`);
+    embed69(`In 10 minutes your exam will start in HCI. <@&${roleId}>`);
   },
   undefined,
   true,
   "Asia/Singapore"
 );
-let scheduleInPENow = new cron.CronJob(
-  "00 10 * * 4",
+let examHCI = new cron.CronJob(
+  "00 14 * * 5",
   () => {
-    embed69(`Join to your class call now in PE. <@&${roleId}>`);
+    embed69(`Start your exam in HCI. Goodluck <@&${roleId}>`);
   },
   undefined,
   true,
   "Asia/Singapore"
 );
-//Schedule for HCI
-let scheduleInHCI = new cron.CronJob(
-  "55 12 * * 2,4",
-  () => {
-    embed69(`In 5mins your class will start in HCI. <@&${roleId}>`);
-  },
-  undefined,
-  true,
-  "Asia/Singapore"
-);
-let scheduleInHCINow = new cron.CronJob(
-  "00 13 * * 2,4",
-  () => {
-    embed69(`Join to your class call now in HCI. <@&${roleId}>`);
-  },
-  undefined,
-  true,
-  "Asia/Singapore"
-);
-//Schedule for Publc Speaking/GE ELECT
-let scheduleInPS = new cron.CronJob(
-  "55 12 * * 3,5",
-  () => {
-    embed69(`In 5mins your class will start in Public Speaking.<@&${roleId}>`);
-  },
-  undefined,
-  true,
-  "Asia/Singapore"
-);
-let scheduleInPSNow = new cron.CronJob(
-  "00 13 * * 3,5",
-  () => {
-    embed69(`Join to your class call now in Public Speaking.<@&${roleId}>`);
-  },
-  undefined,
-  true,
-  "Asia/Singapore"
-);
-//Schedule for MATH
-let scheduleInMath = new cron.CronJob(
-  "25 14 * * 2,4",
-  () => {
-    embed69(`In 5mins your class will start in Math. <@&${roleId}>`);
-  },
-  undefined,
-  true,
-  "Asia/Singapore"
-);
-let scheduleInMathNow = new cron.CronJob(
-  "30 14 * * 2,4",
-  () => {
-    embed69(`Join to your class call now in Math. <@&${roleId}>`);
-  },
-  undefined,
-  true,
-  "Asia/Singapore"
-);
-//Schedule for NSTP
-let scheduleInNSTP = new cron.CronJob(
-  "25 14 * * 3,5",
-  () => {
-    embed69(`In 5mins your class will start in NSTP. <@&${roleId}>`);
-  },
-  undefined,
-  true,
-  "Asia/Singapore"
-);
-let scheduleInNSTPNow = new cron.CronJob(
-  "30 14 * * 3,5",
-  () => {
-    embed69(`Join to your class call now in NSTP. <@&${roleId}>`);
-  },
-  undefined,
-  true,
-  "Asia/Singapore"
-);
-//Executor
-scheduleInCC3.start();
-scheduleInCC3Now.start();
-scheduleInRizal.start();
-scheduleInRizalNow.start();
-scheduleInPsy.start();
-scheduleInPsyNow.start();
-scheduleInPE.start();
-scheduleInPENow.start();
-scheduleInHCI.start();
-scheduleInHCINow.start();
-scheduleInPS.start();
-scheduleInPSNow.start();
-scheduleInMath.start();
-scheduleInMathNow.start();
-scheduleInNSTP.start();
-scheduleInNSTPNow.start();
+examMATHb.start();
+examMATH.start();
+examPSb.start();
+examPS.start();
+examPEb.start();
+examPE.start();
+examHCIb.start();
+examHCI.start();
+// let roleId = "815852692902510603";
+// //Schedule for CC3 every tuesday & thursday
+// let scheduleInCC3 = new cron.CronJob(
+//   "55 6 * * 2,4",
+//   () => {
+//     embed69(`In 5mins your class will start in CC3. <@&${roleId}>`);
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// let scheduleInCC3Now = new cron.CronJob(
+//   "00 7 * * 2,4",
+//   () => {
+//     embed69(`Join to your class call now in CC3. <@&${roleId}>`);
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// //Schedule for SocSci/Rizal
+// let scheduleInRizal = new cron.CronJob(
+//   "25 8 * * 3,5",
+//   () => {
+//     embed69(
+//       `In 5mins your class will start in Rizal. Goodluck pray for your life <@&${roleId}>`
+//     );
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// let scheduleInRizalNow = new cron.CronJob(
+//   "30 8 * * 3,5",
+//   () => {
+//     embed69(`Join to your class call now in Rizal. <@&${roleId}>`);
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// //Schedule for PSY
+// let scheduleInPsy = new cron.CronJob(
+//   "55 9 * * 3,5",
+//   () => {
+//     embed69(`In 5mins your class will start in Psy. <@&${roleId}>`);
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// let scheduleInPsyNow = new cron.CronJob(
+//   "00 10 * * 3,5",
+//   () => {
+//     embed69(`Join to your class call now in Psy. <@&${roleId}>`);
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// //Schedule for PE
+// let scheduleInPE = new cron.CronJob(
+//   "55 9 * * 4",
+//   () => {
+//     embed69(`In 5mins your class will start in PE. <@&${roleId}>`);
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// let scheduleInPENow = new cron.CronJob(
+//   "00 10 * * 4",
+//   () => {
+//     embed69(`Join to your class call now in PE. <@&${roleId}>`);
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// //Schedule for HCI
+// let scheduleInHCI = new cron.CronJob(
+//   "55 12 * * 2,4",
+//   () => {
+//     embed69(`In 5mins your class will start in HCI. <@&${roleId}>`);
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// let scheduleInHCINow = new cron.CronJob(
+//   "00 13 * * 2,4",
+//   () => {
+//     embed69(`Join to your class call now in HCI. <@&${roleId}>`);
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// //Schedule for Publc Speaking/GE ELECT
+// let scheduleInPS = new cron.CronJob(
+//   "55 12 * * 3,5",
+//   () => {
+//     embed69(`In 5mins your class will start in Public Speaking.<@&${roleId}>`);
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// let scheduleInPSNow = new cron.CronJob(
+//   "00 13 * * 3,5",
+//   () => {
+//     embed69(`Join to your class call now in Public Speaking.<@&${roleId}>`);
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// //Schedule for MATH
+// let scheduleInMath = new cron.CronJob(
+//   "25 14 * * 2,4",
+//   () => {
+//     embed69(`In 5mins your class will start in Math. <@&${roleId}>`);
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// let scheduleInMathNow = new cron.CronJob(
+//   "30 14 * * 2,4",
+//   () => {
+//     embed69(`Join to your class call now in Math. <@&${roleId}>`);
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// //Schedule for NSTP
+// let scheduleInNSTP = new cron.CronJob(
+//   "25 14 * * 3,5",
+//   () => {
+//     embed69(`In 5mins your class will start in NSTP. <@&${roleId}>`);
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// let scheduleInNSTPNow = new cron.CronJob(
+//   "30 14 * * 3,5",
+//   () => {
+//     embed69(`Join to your class call now in NSTP. <@&${roleId}>`);
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// //Executor
+// scheduleInCC3.start();
+// scheduleInCC3Now.start();
+// scheduleInRizal.start();
+// scheduleInRizalNow.start();
+// scheduleInPsy.start();
+// scheduleInPsyNow.start();
+// scheduleInPE.start();
+// scheduleInPENow.start();
+// scheduleInHCI.start();
+// scheduleInHCINow.start();
+// scheduleInPS.start();
+// scheduleInPSNow.start();
+// scheduleInMath.start();
+// scheduleInMathNow.start();
+// scheduleInNSTP.start();
+// scheduleInNSTPNow.start();
