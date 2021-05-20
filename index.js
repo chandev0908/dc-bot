@@ -507,6 +507,7 @@ function embed69(description) {
     .get(process.env.SERVER_CHANNEL_ID_GENERAL)
     .send(reminderEmbed);
 }
+let roleId = "815852692902510603";
 //Subject Reminder for weebus
 const cron = require("cron");
 let examMATHb = new cron.CronJob(
@@ -589,7 +590,6 @@ examPEb.start();
 examPE.start();
 examHCIb.start();
 examHCI.start();
-// let roleId = "815852692902510603";
 // //Schedule for CC3 every tuesday & thursday
 // let scheduleInCC3 = new cron.CronJob(
 //   "55 6 * * 2,4",
