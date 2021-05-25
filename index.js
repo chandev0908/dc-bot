@@ -498,98 +498,98 @@ loadCommands(client);
 
 client.login(process.env.TOKEN);
 
-function embed69(description) {
-  const reminderEmbed = new Discord.MessageEmbed()
-    .setColor("#0099ff")
-    .setTitle("Class Schedule Reminder!")
-    .setDescription(description);
-  return client.channels.cache
-    .get(process.env.SERVER_CHANNEL_ID_GENERAL)
-    .send(reminderEmbed);
-}
-let roleId = "815852692902510603";
-//Subject Reminder for weebus
-const cron = require("cron");
-let examMATHb = new cron.CronJob(
-  "50 7 * * 4",
-  () => {
-    embed69(`In 10 minutes your exam will start in MATH. <@&${roleId}>`);
-  },
-  undefined,
-  true,
-  "Asia/Singapore"
-);
-let examMATH = new cron.CronJob(
-  "00 8 * * 4",
-  () => {
-    embed69(`Start your exam in MATH. Goodluck <@&${roleId}>`);
-  },
-  undefined,
-  true,
-  "Asia/Singapore"
-);
-let examPSb = new cron.CronJob(
-  "50 11 * * 4",
-  () => {
-    embed69(`In 10 minutes your exam will start in Public Speaking. <@&${roleId}>`);
-  },
-  undefined,
-  true,
-  "Asia/Singapore"
-);
-let examPS = new cron.CronJob(
-  "00 12 * * 4",
-  () => {
-    embed69(`Start your exam in Public Speaking. Goodluck <@&${roleId}>`);
-  },
-  undefined,
-  true,
-  "Asia/Singapore"
-);
-let examPEb = new cron.CronJob(
-  "50 15 * * 4",
-  () => {
-    embed69(`In 10 minutes your exam will start in PE. <@&${roleId}>`);
-  },
-  undefined,
-  true,
-  "Asia/Singapore"
-);
-let examPE = new cron.CronJob(
-  "00 16 * * 4",
-  () => {
-    embed69(`Start your exam in PE. Goodluck <@&${roleId}>`);
-  },
-  undefined,
-  true,
-  "Asia/Singapore"
-);
-let examHCIb = new cron.CronJob(
-  "50 13 * * 5",
-  () => {
-    embed69(`In 10 minutes your exam will start in HCI. <@&${roleId}>`);
-  },
-  undefined,
-  true,
-  "Asia/Singapore"
-);
-let examHCI = new cron.CronJob(
-  "00 14 * * 5",
-  () => {
-    embed69(`Start your exam in HCI. Goodluck <@&${roleId}>`);
-  },
-  undefined,
-  true,
-  "Asia/Singapore"
-);
-examMATHb.start();
-examMATH.start();
-examPSb.start();
-examPS.start();
-examPEb.start();
-examPE.start();
-examHCIb.start();
-examHCI.start();
+// function embed69(description) {
+//   const reminderEmbed = new Discord.MessageEmbed()
+//     .setColor("#0099ff")
+//     .setTitle("Class Schedule Reminder!")
+//     .setDescription(description);
+//   return client.channels.cache
+//     .get(process.env.SERVER_CHANNEL_ID_GENERAL)
+//     .send(reminderEmbed);
+// }
+// let roleId = "815852692902510603";
+// //Subject Reminder for weebus
+// const cron = require("cron");
+// let examMATHb = new cron.CronJob(
+//   "50 7 * * 4",
+//   () => {
+//     embed69(`In 10 minutes your exam will start in MATH. <@&${roleId}>`);
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// let examMATH = new cron.CronJob(
+//   "00 8 * * 4",
+//   () => {
+//     embed69(`Start your exam in MATH. Goodluck <@&${roleId}>`);
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// let examPSb = new cron.CronJob(
+//   "50 11 * * 4",
+//   () => {
+//     embed69(`In 10 minutes your exam will start in Public Speaking. <@&${roleId}>`);
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// let examPS = new cron.CronJob(
+//   "00 12 * * 4",
+//   () => {
+//     embed69(`Start your exam in Public Speaking. Goodluck <@&${roleId}>`);
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// let examPEb = new cron.CronJob(
+//   "50 15 * * 4",
+//   () => {
+//     embed69(`In 10 minutes your exam will start in PE. <@&${roleId}>`);
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// let examPE = new cron.CronJob(
+//   "00 16 * * 4",
+//   () => {
+//     embed69(`Start your exam in PE. Goodluck <@&${roleId}>`);
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// let examHCIb = new cron.CronJob(
+//   "50 13 * * 5",
+//   () => {
+//     embed69(`In 10 minutes your exam will start in HCI. <@&${roleId}>`);
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// let examHCI = new cron.CronJob(
+//   "00 14 * * 5",
+//   () => {
+//     embed69(`Start your exam in HCI. Goodluck <@&${roleId}>`);
+//   },
+//   undefined,
+//   true,
+//   "Asia/Singapore"
+// );
+// examMATHb.start();
+// examMATH.start();
+// examPSb.start();
+// examPS.start();
+// examPEb.start();
+// examPE.start();
+// examHCIb.start();
+// examHCI.start();
 // //Schedule for CC3 every tuesday & thursday
 // let scheduleInCC3 = new cron.CronJob(
 //   "55 6 * * 2,4",
