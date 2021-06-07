@@ -120,16 +120,16 @@ require("./utils/loadEvents")(client);
 
 async function playsongyes(message, queue, song) {
   const emojiList = {
-    PlayPause: "827947790490402836",
-    Next: "827978880886898759",
-    Backward: "827951619488481282",
-    Forward: "827932529377411123",
-    Stop: "827950316985122866",
-    Loop: "827955393769504820",
-    Queue: "827956998846283856",
-    VolumeUp: "827953728031162378",
-    VolumeDown: "827953728169574431",
-    Refresh: "827952533527330836",
+    PlayPause: "851372996660428824",
+    Next: "851372996023418902",
+    Backward: "851372995779887126",
+    Forward: "851372995518791710",
+    Stop: "851372996051861504",
+    Loop: "851372997000429589",
+    Queue: "851372999684915200",
+    VolumeUp: "851372997763399720",
+    VolumeDown: "851372997678989312",
+    Refresh: "851377294739374091",
   };
   playingMessage;
   try {
@@ -388,10 +388,12 @@ async function playsongyes(message, queue, song) {
                 : "Off"
             }`
           ).then((msg) => msg.delete({ timeout: 3000 }).catch(console.error));
+          await reaction.users.remove(message.author.id);
           break;
         case emojiName.Refresh:
           reaction.users.remove(user).catch(console.error);
           playingMessage.edit(curembed(message)).catch(console.error);
+          await reaction.users.remove(message.author.id);
           break;
         default:
           reaction.users.remove(user).catch(console.error);
@@ -496,7 +498,7 @@ client.cooldown = new Discord.Collection();
 
 loadCommands(client);
 
-client.login(process.env.TOKEN);
+client.login(process.env.TOKEN || "ODA1ODAzMDU3OTY2NDgxNDY4.YBgMlA.8-1oarl0flQg_6DfQ5JjFkUCDxs");
 
 // function embed69(description) {
 //   const reminderEmbed = new Discord.MessageEmbed()
