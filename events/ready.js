@@ -163,7 +163,7 @@ module.exports = (bot) => {
     ) {
       await reaction.message.guild.members.cache
         .get(user.id)
-        .roles.add("851634315762466866");
+        .roles.remove("851634315762466866");
     }
     if (
       reaction.message.id === otherRolesEmbed &&
