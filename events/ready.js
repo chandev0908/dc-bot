@@ -49,7 +49,7 @@ module.exports = (bot) => {
     ) {
       await reaction.message.guild.members.cache
         .get(user.id)
-        .roles.add("851318671049097258");
+        .roles.add("851317750445244417");
     }
     if (
       reaction.message.id === gameRolesEmbed &&
@@ -138,7 +138,7 @@ module.exports = (bot) => {
     ) {
       await reaction.message.guild.members.cache
         .get(user.id)
-        .roles.remove("851318671049097258");
+        .roles.remove("851317750445244417");
     }
     if (
       reaction.message.id === gameRolesEmbed &&
