@@ -12,6 +12,8 @@ module.exports = (bot) => {
     Arts: "851412979869810689",
     Gamedev: "851413634528706622",
     Nsfw: "851412980398293052",
+    Pikachu: "892009078539292692",
+    Axie: "892008517932843008",
   };
   bot.on("messageReactionAdd", async (reaction, user) => {
     if (reaction.message.partial) await reaction.message.fetch();
@@ -101,6 +103,22 @@ module.exports = (bot) => {
         .get(user.id)
         .roles.add("851399596298338324");
     }
+    if (
+      reaction.message.id === gameRolesEmbed &&
+      reaction.emoji.id === iconRole.Pikachu
+    ) {
+      await reaction.message.guild.members.cache
+        .get(user.id)
+        .roles.add("851394600384200724");
+    }
+    if (
+      reaction.message.id === gameRolesEmbed &&
+      reaction.emoji.id === iconRole.Axie
+    ) {
+      await reaction.message.guild.members.cache
+        .get(user.id)
+        .roles.add("892017283814281246");
+    }
   });
   bot.on("messageReactionRemove", async (reaction, user) => {
     if (reaction.message.partial) await reaction.message.fetch();
@@ -189,6 +207,22 @@ module.exports = (bot) => {
       await reaction.message.guild.members.cache
         .get(user.id)
         .roles.remove("851399596298338324");
+    }
+    if (
+      reaction.message.id === gameRolesEmbed &&
+      reaction.emoji.id === iconRole.Pikachu
+    ) {
+      await reaction.message.guild.members.cache
+        .get(user.id)
+        .roles.remove("851394600384200724");
+    }
+    if (
+      reaction.message.id === gameRolesEmbed &&
+      reaction.emoji.id === iconRole.Axie
+    ) {
+      await reaction.message.guild.members.cache
+        .get(user.id)
+        .roles.remove("892017283814281246");
     }
   });
 };
